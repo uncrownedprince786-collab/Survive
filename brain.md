@@ -43,7 +43,7 @@ Test runner: Vitest (required by "tests must pass"). No other runtime deps.
 | F Hardening | security headers, a11y, perf, tests, CI | ✅ done |
 
 ## Live
-- Production: https://survive-ivory.vercel.app  ("survive" name was taken)
+- Production: https://surviveplanner.vercel.app  (primary; survive-ivory.vercel.app also resolves. "survive"/"survive.vercel.app" were taken)
 - Repo: https://github.com/uncrownedprince786-collab/Survive (main; Vercel auto-deploy connected)
 - Vercel project: uncrownedprince786-6663s-projects/survive
 - lint · typecheck · 43 tests · build all pass. Security headers + CSP verified live.
