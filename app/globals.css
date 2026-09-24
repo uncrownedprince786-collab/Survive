@@ -9,7 +9,8 @@
   --color-ink: #111827;
   --color-surface: #ffffff;
   --color-canvas: #f8fafc;
-  --color-muted: #64748b;
+  /* Body/secondary text — slate-600, ~7:1 on white (comfortably WCAG AA/AAA) */
+  --color-muted: #475569;
   --color-border: #e2e8f0;
   --color-positive: #168a5b;
   --color-warning: #c98a00;
@@ -68,16 +69,20 @@ body {
   top: 12px;
 }
 
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
+/* Reveal-in: runs once on load and ALWAYS resolves to visible (never JS-gated,
+   so content can never be stuck hidden for crawlers, screenshots, or no-JS). */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+.reveal {
+  animation: reveal-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,9 +90,7 @@ body {
     scroll-behavior: auto;
   }
   .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    animation: none !important;
   }
   *,
   *::before,
