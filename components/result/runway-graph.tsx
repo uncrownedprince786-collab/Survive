@@ -19,10 +19,10 @@ export function RunwayGraph({
   if (points.length < 2) return null;
 
   const maxMonth = Math.max(1, points[points.length - 1].month);
-  const maxVal = Math.max(
-    1,
-    ...points.map((p) => Math.max(p.base, p.survival)),
-  );
+  const rawMax = Math.max(0, ...points.map((p) => Math.max(p.base, p.survival)));
+  const hasData = rawMax > 0;
+  // Fall back to a unit range only for geometry; labels are suppressed when there's nothing to plot.
+  const maxVal = hasData ? rawMax : 1;
 
   const x = (m: number) => PAD.l + (m / maxMonth) * (W - PAD.l - PAD.r);
   const y = (v: number) => PAD.t + (1 - v / maxVal) * (H - PAD.t - PAD.b);
@@ -43,7 +43,7 @@ export function RunwayGraph({
   const baseZero = zeroMonth("base");
   const survZero = zeroMonth("survival");
 
-  const yTicks = [0, 0.5, 1].map((f) => f * maxVal);
+  const yTicks = hasData ? [0, 0.5, 1].map((f) => f * maxVal) : [0];
   const xTicks = [0, 0.5, 1].map((f) => f * maxMonth);
 
   return (
