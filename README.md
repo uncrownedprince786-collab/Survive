@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SURVIVE
 
-## Getting Started
+A privacy-first personal & business **financial runway calculator**. Answer one
+question honestly: _if income or revenue stopped today, how long could the money
+last — and what could you temporarily cut to buy more time?_
 
-First, run the development server:
+- **Deterministic math only** — no AI in calculations or recommendations.
+- **Private by design** — everything runs in your browser. No account, no server,
+  no analytics. Your plan is stored only in your own `localStorage`.
+- **Personal · Business · Both** — Both shows two plans side by side and never
+  merges the money.
+
+## Tech
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Vitest ·
+deployed on Vercel.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | Run unit tests (calculation engine) |
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` to `.env.local`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_SITE_URL` — canonical origin, used for metadata, canonicals,
+  sitemap and Open Graph. Set it to your deployed URL.
+- `DATABASE_URL` — **reserved**. V1 is fully offline and does not read it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+app/          routes (home, calculator, results, content pages, SEO files)
+components/    UI, plan inputs, result views
+lib/          calculations (pure engine + tests), validation, formatting, seo
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The calculation engine in `lib/calculations` is pure and unit-tested; the UI only
+renders its output.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> SURVIVE provides informational estimates only and is **not** financial advice.
