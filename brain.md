@@ -36,11 +36,17 @@ Test runner: Vitest (required by "tests must pass"). No other runtime deps.
 | Track | Scope | Status |
 |-------|-------|--------|
 | A Foundation | init, design system, logo, layout, nav, footer, 404 | ✅ done |
-| B Calc engine | pure functions + unit tests | ✅ engine done · tests pending |
-| C Calculator UI | multi-step form, mode selector, localStorage, validation | ⏳ |
-| D Results | hierarchy, survival mode, SVG graph, share, export | ⏳ |
-| E Marketing/SEO | homepage, educational pages, full metadata | ⏳ |
-| F Hardening | security headers, a11y, perf, tests, CI | ⏳ |
+| B Calc engine | pure functions + unit tests (43 passing) | ✅ done |
+| C Calculator UI | multi-step form, mode selector, localStorage, validation | ✅ done |
+| D Results | hierarchy, survival mode, SVG graph, share, export | ✅ done |
+| E Marketing/SEO | homepage, educational pages, full metadata | ✅ done |
+| F Hardening | security headers, a11y, perf, tests, CI | ✅ done |
+
+## Live
+- Production: https://survive-ivory.vercel.app  ("survive" name was taken)
+- Repo: https://github.com/uncrownedprince786-collab/Survive (main; Vercel auto-deploy connected)
+- Vercel project: uncrownedprince786-6663s-projects/survive
+- lint · typecheck · 43 tests · build all pass. Security headers + CSP verified live.
 
 ## Routes
 `/` `/calculator` `/results` `/how-it-works` `/about` `/privacy` `/terms`
@@ -51,6 +57,11 @@ Test runner: Vitest (required by "tests must pass"). No other runtime deps.
 - `DATABASE_URL` — reserved (unused in V1).
 
 ## Ship checklist
-- [ ] lint · [ ] typecheck · [ ] test · [ ] production build
-- [ ] push to github.com/uncrownedprince786-collab/Survive
-- [ ] Vercel deploy + set `NEXT_PUBLIC_SITE_URL`
+- [x] lint · [x] typecheck · [x] test · [x] production build
+- [x] push to github.com/uncrownedprince786-collab/Survive
+- [x] Vercel deploy + set `NEXT_PUBLIC_SITE_URL` (+ DATABASE_URL reserved)
+
+## Post-launch (owner action)
+- Submit sitemap in Google Search Console (verify domain first) to accelerate indexing.
+- Optionally add a custom domain in Vercel and update `NEXT_PUBLIC_SITE_URL`.
+- Rotate the Neon DB password (it was shared in plaintext).
